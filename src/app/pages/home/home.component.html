@@ -1,0 +1,92 @@
+<div class="m-5 animated fadeIn faster">
+
+  <div class="container" >
+<!--    title-->
+    <h1>Por cuanto me voy?</h1>
+    <hr>
+<!--    action buttons-->
+    <div class="text-right">
+      <button class="btn btn-outline-primary mr-2" routerLink="/curso/{{id}}/nuevo">
+        Agregar curso
+      </button>
+      <button class="btn btn-outline-danger " (click)="logout()">
+        Salir
+      </button>
+    </div>
+
+<!--    table of the courses-->
+
+  </div>
+
+</div>
+<div class="container">
+<div class="table-responsive">
+
+  <table class="table">
+    <table *ngIf="!loading && courses.length > 0" class="table mt-3 animated fadeIn faster">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Te vas por</th>
+        <th scope="col">Promedio actual</th>
+        <th scope="col">Meta</th>
+        <th scope="col">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor=" let course of courses; let i = index">
+        <td>{{course.name}}</td>
+        <td>
+          <label *ngIf=" course.mission < 7" class="badge badge-success">
+            {{course.mission.toFixed(2)}}
+          </label>
+          <label *ngIf=" course.mission > 7 && course.mission < 14" class=" badge badge-warning">
+            {{course.mission.toFixed(2)}}
+          </label>
+          <label *ngIf=" course.mission > 14 " class="badge badge-danger">
+            {{course.mission.toFixed(2)}}
+          </label>
+        </td>
+        <td>{{course.average.toFixed(2)}} &nbsp; al {{course.currentPercentage}}%</td>
+        <td>
+
+        <label  >
+          {{course.goal}}
+        </label>
+        </td>
+        <td>
+          <button class="btn btn-info mr-1" [routerLink]="['/curso',id,course.id]">
+            <i class="fa fa-pencil"></i>
+          </button>
+
+          <button class="btn btn-danger"
+                  (click)="deleteCourse(course,i)">
+            <i class="fa fa-trash"></i>
+          </button>
+
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </table>
+</div>
+
+  <div *ngIf="!loading && courses.length === 0" class="alert alert-warning text-center mt-3">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+  </div>
+
+  <div *ngIf="loading" class="alert alert-info text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">Cargando</h4>
+    <p>
+      <i class="fa fa-refresh fa-spin fa-2x"></i>
+    </p>
+    <p class="mb-0">
+      Espere por favor
+    </p>
+  </div>
+</div>

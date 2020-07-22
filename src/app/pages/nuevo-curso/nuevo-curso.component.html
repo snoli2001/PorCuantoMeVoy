@@ -1,0 +1,151 @@
+<h2 class="mt-2 animated fadeIn faster"><small>Configura tu nuevo curso</small></h2>
+
+<div class="col text-right ">
+
+
+    <button type="submit" class="btn btn-outline-dark mr-2 mt-3 mb-5 animated fadeIn faster"  (click)="save()">
+      <i class="fa fa-save"></i>
+      &nbsp; Guardar
+    </button>
+    <button class="btn btn-outline-danger mt-3 mb-5 animated fadeIn faster" [routerLink]="['/home',idUser]">
+      <i class="fa fa-arrow-left"></i>
+      Regresar
+    </button>
+
+</div>
+
+<div class="row animated fadeIn faster">
+  <div class="col">
+    <form *ngIf="!loading" autocomplete="off" [formGroup]="form"  (ngSubmit)="save()" >
+
+
+        <div class="row">
+          <div class="col">
+            <input type="text"
+                   formControlName="name"
+                   class="form-control"
+                   [class.is-invalid]="invalidName"
+                   placeholder="Nombre curso">
+            <small *ngIf="invalidName" class="text-danger">
+              Mínimo 2 letras
+            </small>
+          </div>
+          <div class="col">
+            <input type="text"
+                   formControlName="goal"
+                   class="form-control"
+                   [class.is-invalid]="invalidGoal"
+                   placeholder="Nota deseada">
+            <small *ngIf="invalidGoal" class="text-danger">
+              nota válida(0-20)
+            </small>
+          </div>
+        </div>
+
+
+      <hr class="mt-5">
+      <div formArrayName="grades">
+      <div *ngFor="let control of grades.controls ; let i = index" >
+       <div class="form-row" [formGroupName]="i">
+
+
+          <div class="form-group col-5">
+            <input type="text"
+                   class="form-control"
+                    formControlName="note"
+                   required
+                   placeholder="Nota {{i+1}} ">
+            <small *ngIf="control.get('note').invalid && control.get('note').touched" class="text-danger">
+             nota válida(0-20)
+            </small>
+          </div>
+          <div class="form-group col-5">
+            <input type="text"
+                   class="form-control"
+                   formControlName="weight"
+                   required
+                   placeholder="peso (%)">
+            <small *ngIf="control.get('weight').invalid && control.get('weight').touched" class="text-danger">
+              ingrese un peso válido
+            </small>
+          </div>
+
+          <div class="form-group col-2">
+            <button class="btn btn-danger"  type="button" (click)="deleteGrade(i)"
+            >
+              <i class="fa fa-trash"></i>
+            </button></div>
+        </div>
+       </div>
+      </div>
+
+
+
+        <div class=" form-group row col mt-4">
+          <label class="col-5 col-form-label ">Nota actual: </label>
+          <input class="col-3 form-control" disabled="disabled"
+                 placeholder="{{this.average.toFixed(2)}}" >
+        </div>
+
+      <div class=" form-group row col mt-4">
+        <label class="col-5 col-form-label ">Al: </label>
+        <input class="col-3 form-control" disabled="disabled"
+
+                placeholder="{{this.currentPercentage}} %">
+      </div>
+      <div *ngIf="this.mission != 0 && this.mission != null">
+        <div class=" form-group row col mt-4">
+          <label class="col-5 col-form-label ">Te vas por:</label>
+          <input class="col-3 form-control "  disabled="disabled" placeholder="{{this.mission.toFixed(2)}}">
+        </div>
+      </div>
+      <small *ngIf="this.invalidCurrentPercentage === true" class="text-danger">
+        El porcentaje supera el 100%
+      </small>
+
+        <div class="col text-right mt-4 ">
+
+          <button class="btn btn-outline-primary  mr-2"
+                  (click)="addGrade()" type="button">
+                        <i class="fa fa-plus"></i>
+                        Agregar nota
+          </button>
+
+          <button  class="btn btn-outline-success" type="button" (click)="calculate()">
+            <i class="fa fa-calculator"></i>
+            &nbsp; calcular
+          </button>
+
+
+        </div>
+
+
+
+
+
+    </form>
+  </div>
+</div>
+<div *ngIf="loading" class="alert alert-info text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">Cargando</h4>
+  <p>
+    <i class="fa fa-refresh fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">
+    Espere por favor
+  </p>
+</div>
+
+<!--<hr>-->
+<!--<pre>-->
+<!--  Estado del formulario: {{ form.valid }}-->
+<!--  <br>-->
+<!--  Status: {{ form.status }}-->
+<!--</pre>-->
+
+<!--<pre>-->
+
+<!--  {{ form.value | json }}-->
+
+<!--</pre>-->
+
