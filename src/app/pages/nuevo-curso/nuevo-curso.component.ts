@@ -195,7 +195,8 @@ export class NuevoCursoComponent implements OnInit {
       if( x<=5 ) {
         Swal.fire({
           allowOutsideClick: false,
-          imageUrl: '../../../assets/images/LadeRonaldinho.jpeg',
+          // imageUrl: 'assets/images/LadeRonaldinho.jpeg',
+          html: '<img src="assets/images/LadeRonaldinho.jpeg">',
           text: 'te vas por ' + this.form.controls['mission'].value.toFixed(2) + ' hiciste la de ronaldinho',
           // icon: 'info',
           confirmButtonText: 'ok',
@@ -203,7 +204,8 @@ export class NuevoCursoComponent implements OnInit {
       } else if( x >5 && x <= 13 ) {
         Swal.fire({
           allowOutsideClick: false,
-          imageUrl: '../../../assets/images/cuto_laFe.jpg',
+          // imageUrl: 'assets/images/cuto_laFe.jpg',
+          html: '<img src="assets/images/cuto_laFe.jpg">',
           text: 'te vas por ' + this.form.controls['mission'].value.toFixed(2) + ' con fe',
           // icon: 'info',
           confirmButtonText: 'ok',
@@ -211,7 +213,8 @@ export class NuevoCursoComponent implements OnInit {
       } else if(x >13 && x <= 20 ) {
         Swal.fire({
           allowOutsideClick: false,
-          imageUrl: '../../../assets/images/finHombreAraña.jpeg',
+          // imageUrl: 'assets/images/finHombreAraña.jpeg',
+          html: '<img src="assets/images/finHombreArana.jpeg">',
           text: 'te vas por ' + this.form.controls['mission'].value.toFixed(2),
           // icon: 'info',
           confirmButtonText: 'ok',
@@ -219,7 +222,8 @@ export class NuevoCursoComponent implements OnInit {
       } else if( x>20 ){
         Swal.fire({
           allowOutsideClick: false,
-          imageUrl: '../../../assets/images/fairPlay.jpeg',
+          // imageUrl: 'assets/images/fairPlay.jpeg',
+          html: '<img src="assets/images/fairPlay.jpeg">',
           text: 'te vas por ' + this.form.controls['mission'].value.toFixed(2) + ' osea estas loco',
           // icon: 'info',
           confirmButtonText: 'ok',

@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
       }
 
       this.router.navigate(['/home',response.localId]);
+
     },(err) => {
       Swal.fire({
         title: 'Error al autenticar',
