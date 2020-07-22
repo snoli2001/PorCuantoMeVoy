@@ -196,8 +196,10 @@ export class NuevoCursoComponent implements OnInit {
         Swal.fire({
           allowOutsideClick: false,
           // imageUrl: 'assets/images/LadeRonaldinho.jpeg',
-          html: '<img src="assets/images/LadeRonaldinho.jpeg">',
-          text: 'te vas por ' + this.form.controls['mission'].value.toFixed(2) + ' hiciste la de ronaldinho',
+          // html: '<img src="assets/images/LadeRonaldinho.jpeg">',
+          html: '<img src="assets/images/LadeRonaldinho.jpeg" width="200" height="150" style="margin-bottom: 15px">'
+            + '<h5>te vas por </>' + this.form.controls['mission'].value.toFixed(2) + ' hiciste la de ronaldinho',
+          // text: 'te vas por ' + this.form.controls['mission'].value.toFixed(2) + ' hiciste la de ronaldinho',
           // icon: 'info',
           confirmButtonText: 'ok',
         })
@@ -205,17 +207,19 @@ export class NuevoCursoComponent implements OnInit {
         Swal.fire({
           allowOutsideClick: false,
           // imageUrl: 'assets/images/cuto_laFe.jpg',
-          html: '<img src="assets/images/cuto_laFe.jpg">',
-          text: 'te vas por ' + this.form.controls['mission'].value.toFixed(2) + ' con fe',
+          html: '<img src="assets/images/cuto_laFe.jpg" width="200" height="150" style="margin-bottom: 15px">'
+          + '<h5>te vas por </>' + this.form.controls['mission'].value.toFixed(2) + ' con fe',
           // icon: 'info',
           confirmButtonText: 'ok',
         })
       } else if(x >13 && x <= 20 ) {
         Swal.fire({
           allowOutsideClick: false,
-          // imageUrl: 'assets/images/finHombreAraña.jpeg',
-          html: '<img src="assets/images/finHombreArana.jpeg">',
-          text: 'te vas por ' + this.form.controls['mission'].value.toFixed(2),
+          // imageUrl: 'assets/images/finHombreArana.jpeg',
+          html: '<img src="assets/images/finHombreArana.jpeg" style="margin-bottom: 5px">'
+            + '<h5>te vas por </>' + this.form.controls['mission'].value.toFixed(2),
+
+          // text: 'te vas por ' + this.form.controls['mission'].value.toFixed(2),
           // icon: 'info',
           confirmButtonText: 'ok',
         });
@@ -223,8 +227,11 @@ export class NuevoCursoComponent implements OnInit {
         Swal.fire({
           allowOutsideClick: false,
           // imageUrl: 'assets/images/fairPlay.jpeg',
-          html: '<img src="assets/images/fairPlay.jpeg">',
-          text: 'te vas por ' + this.form.controls['mission'].value.toFixed(2) + ' osea estas loco',
+          // html: '<img src="assets/images/fairPlay.jpeg">',
+          html: '<img src="assets/images/fairPlay.jpeg" style="margin-bottom: 5px">'
+            + '<h5>te vas por </>' + this.form.controls['mission'].value.toFixed(2)+ ', osea estas loco',
+
+          // text: 'te vas por ' + this.form.controls['mission'].value.toFixed(2) + ' osea estas loco',
           // icon: 'info',
           confirmButtonText: 'ok',
         });
